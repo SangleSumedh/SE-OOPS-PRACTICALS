@@ -1,0 +1,91 @@
+// Crete User defined exception to check the following conditions and throw the exception
+// if the criterion does not meet.
+// a. User has age between 18 and 55
+// b. User stays has income between Rs. 50,000 – Rs. 1,00,000 per month
+// c. User stays in Pune/ Mumbai/ Bangalore / Chennai
+// d. User has 4-wheeler
+// Accept age, Income, City, Vehicle from the user and check for the conditions mentioned
+// above. If any of the condition not met then throw the exception.
+
+#include<iostream>
+using namespace std;
+
+int flag=0;
+
+class Exception{
+    private:
+    
+    int age,income;
+    string city,vechile;
+
+    public:
+
+    void getdata(){
+    cout<<"Enter your age :-"<<endl;
+    cin>>age;
+
+    cout<<"Enter your Income :-"<<endl;
+    cin>>income;
+
+    cout<<"Enter the City in which you stay (Make Use Capital letters only):-"<<endl;
+    cin>>city;
+
+    cout<<"Do You have a Four Wheeler ?  Answer in YES Or NO (Make use Capital letters only) :-"<<endl;
+    cin>>vechile;
+    }
+
+    void Display(){
+        try{
+            if(age<18 || age>55){
+                throw(age);
+            }
+            else if(income<50000 || income>100000){
+                throw(income);
+            }
+
+            else if(city!="PUNE" && city!="MUMBAI" && city!="BANGALORE" && city!="CHENNAI"){
+                throw(city);
+            }
+
+            else if(vechile!="YES" && vechile!="yes" && vechile!="Yes"){
+                throw(vechile);
+            }        
+        }
+        catch(int age){
+            cout<<"Do no fit in the criteria ";
+            cout<<"1"<<endl;
+            flag=1;
+
+        }
+        catch(int income){
+            cout<<"Do no fit in the criteria ";
+            cout<<"2"<<endl;
+            flag=1;
+        }
+        catch(string city){
+            cout<<"Do no fit in the criteria ";
+            cout<<"3"<<endl;
+            flag=1;
+        }
+        catch(string vechile){
+            cout<<"Do no fit in the criteria ";
+            cout<<"4"<<endl;
+            flag=1;
+        }
+        if(flag==0){
+            cout<<"Congratulations You Fit in all our criteria "<<endl;
+        }
+        
+    }
+   
+};
+
+
+int main(){
+    Exception e1,e2;
+    e1.getdata();
+    e2.getdata();
+    e1.Display();
+    e2.Display();
+}
+
